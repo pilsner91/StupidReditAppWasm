@@ -1,0 +1,19 @@
+{
+  "Users": [
+    {
+      "Id": 1,
+      "UserName": "asdf"
+    }
+  ],
+  "Todos": [
+    {
+      "Id": 1,
+      "Owner": {
+        "Id": 1,
+        "UserName": "asdf"
+      },
+      "Title": "sdaf",
+      "IsCompleted": false
+    }
+  ]
+}
