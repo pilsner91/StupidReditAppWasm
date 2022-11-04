@@ -6,7 +6,7 @@ public class Post
     public User Owner { get; }
     public string Title { get; }
 
-    public bool IsCompleted { get; set; }
+    public bool Published { get; set; }
 
     public Post(User owner, string title)
     {

@@ -14,15 +14,15 @@
     }
     else if (!users.Any())
     {
-        <label>No users, you cannot create a Todo</label>
+        <label>No users, you cannot create a Post</label>
     }
     else if (dto == null)
     {
-        <label>Loading Todo data..</label>
+        <label>Loading Post data..</label>
     }
     else
     {
-        <h3>Update Todo</h3>
+        <h3>Update Post</h3>
         <div class="form-group field">
             <label>Title:</label>
             <input type="text" @bind="dto.Title"/>
@@ -83,7 +83,7 @@
         try
         {
             await PostService.UpdateAsync(dto);
-            navMgr.NavigateTo("/ViewTodos");
+            navMgr.NavigateTo("/ViewPosts");
         }
         catch (Exception e)
         {

@@ -56,18 +56,18 @@ public class PostLogic : IPostLogic
             }
         }
 
-        if (dto.IsCompleted != null && existing.IsCompleted && !(bool)dto.IsCompleted)
+        if (dto.Published != null && existing.Published && !(bool)dto.Published)
         {
             throw new Exception("Cannot un-complete a completed Todo");
         }
 
         User userToUse = user ?? existing.Owner;
         string titleToUse = dto.Title ?? existing.Title;
-        bool completedToUse = dto.IsCompleted ?? existing.IsCompleted;
+        bool completedToUse = dto.Published ?? existing.Published;
         
         Post updated = new (userToUse, titleToUse)
         {
-            IsCompleted = completedToUse,
+            Published = completedToUse,
             Id = existing.Id,
         };
 
@@ -84,7 +84,7 @@ public class PostLogic : IPostLogic
             throw new Exception($"Todo with ID {id} was not found!");
         }
 
-        if (!todo.IsCompleted)
+        if (!todo.Published)
         {
             throw new Exception("Cannot delete un-completed Todo!");
         }
@@ -100,7 +100,7 @@ public class PostLogic : IPostLogic
             throw new Exception($"Todo with id {id} not found");
         }
 
-        return new PostBasicDto(todo.Id, todo.Owner.UserName, todo.Title, todo.IsCompleted);
+        return new PostBasicDto(todo.Id, todo.Owner.UserName, todo.Title, todo.Published);
     }
 
     private void ValidatePost(Post dto)

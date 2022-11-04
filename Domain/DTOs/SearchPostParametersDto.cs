@@ -4,14 +4,14 @@ public class SearchPostParametersDto
 {
     public string? Username { get;}
     public int? UserId { get;}
-    public bool? CompletedStatus { get;}
+    public bool? Published { get;}
     public string? TitleContains { get;}
 
-    public SearchPostParametersDto(string? username, int? userId, bool? completedStatus, string? titleContains)
+    public SearchPostParametersDto(string? username, int? userId, bool? published, string? titleContains)
     {
         Username = username;
         UserId = userId;
-        CompletedStatus = completedStatus;
+        Published = published;
         TitleContains = titleContains;
     }
 }

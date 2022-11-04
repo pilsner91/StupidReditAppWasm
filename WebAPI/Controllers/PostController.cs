@@ -34,13 +34,13 @@ public class PostsController : ControllerBase
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Post>>> GetAsync([FromQuery] string? userName, [FromQuery] int? userId,
-        [FromQuery] bool? completedStatus, [FromQuery] string? titleContains)
+        [FromQuery] bool? published, [FromQuery] string? titleContains)
     {
         try
         {
-            SearchPostParametersDto parameters = new(userName, userId, completedStatus, titleContains);
-            var todos = await _postLogic.GetAsync(parameters);
-            return Ok(todos);
+            SearchPostParametersDto parameters = new(userName, userId, published, titleContains);
+            var posts = await _postLogic.GetAsync(parameters);
+            return Ok(posts);
         }
         catch (Exception e)
         {

@@ -5,13 +5,13 @@ public class PostBasicDto
     public int Id { get; }
     public string OwnerName { get; }
     public string Title { get; }
-    public bool IsCompleted { get;  }
+    public bool Published { get;  }
 
-    public PostBasicDto(int id, string ownerName, string title, bool isCompleted)
+    public PostBasicDto(int id, string ownerName, string title, bool published)
     {
         Id = id;
         OwnerName = ownerName;
         Title = title;
-        IsCompleted = isCompleted;
+        Published = published;
     }
 }
