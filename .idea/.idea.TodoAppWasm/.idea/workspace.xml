@@ -8,25 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa1df05f-a2d0-43aa-83e2-3e5c8e83b3f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TodoAppWasm/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TodoAppWasm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StupidReditAppWasm/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StupidReditAppWasm/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DaoInterfaces/IPostDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DaoInterfaces/IPostDao.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Logic/PostLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Logic/PostLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlazorWASM/Pages/CreatePost.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BlazorWASM/Pages/CreatePost.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlazorWASM/Pages/EditTodo.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BlazorWASM/Pages/EditPost.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlazorWASM/Pages/ViewTodos.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BlazorWASM/Pages/ViewPosts.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlazorWASM/Pages/ViewTodos.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/BlazorWASM/Pages/ViewPosts.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlazorWASM/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/BlazorWASM/Shared/NavMenu.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/DTOs/PostBasicDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/PostBasicDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/DTOs/PostUpdateDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/PostUpdateDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/DTOs/SearchPostParametersDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/DTOs/SearchPostParametersDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Models/Post.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Models/Post.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileData/DAOs/PostFileDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileData/DAOs/PostFileDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileData/DataContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileData/DataContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileData/FileContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FileData/FileContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpClients/ClientInterfaces/IPostService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HttpClients/ClientInterfaces/IPostService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpClients/Implementations/PostHttpClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HttpClients/Implementations/PostHttpClient.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,8 +104,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667560834651</updated>
-      <workItem from="1667560835101" duration="1722000" />
+      <workItem from="1667560835101" duration="2216000" />
     </task>
+    <task id="LOCAL-00001" summary="changed names">
+      <created>1667562672940</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667562672940</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,5 +134,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="changed names" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed names" />
   </component>
 </project>

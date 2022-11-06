@@ -1,4 +1,4 @@
-﻿@page "/EditPost/{id:int}"
+﻿@page "/ViewPost/{id:int}"
 @using Domain.DTOs
 @using Domain.Models
 @using HttpClients.ClientInterfaces
@@ -35,9 +35,7 @@
                 <option>Choose</option>
                 @foreach (User user in users)
                 {
-                    @if(user.Id.Equals(dto.OwnerId)){
-                        <option value="@user.Id">@user.UserName</option>
-                    }
+                    <option value="@user.Id">@user.UserName</option>
                 }
             </select>
         </div>

@@ -18,10 +18,12 @@
     }
     else
     {
-        <h3>Create Todo</h3>
+        <h3>Create Post</h3>
         <div class="form-group field">
             <label>Title:</label>
             <input type="text" @bind="postTitle"/>
+            <label>Text:</label>
+            <input type="text" @bind="postText"/>
         </div>
         <div class="form-group field">
             <label>Assignee:</label>
@@ -52,6 +54,7 @@
     private IEnumerable<User>? users;
     private int? selectedUserId;
     private string postTitle = "";
+    private string postText = "";
 
     private string msg = "";
 
@@ -84,17 +87,23 @@
             msg = "Title cannot be empty!";
             return;
         }
-
+        if (string.IsNullOrEmpty(postText))
+        {
+            msg = "text cannot be empty!";
+            return;
+        }
         try
         {
-            PostCreationDto dto = new((int)selectedUserId, postTitle);
+            PostCreationDto dto = new((int)selectedUserId, postTitle, postText);
             await PostService.CreateAsync(dto);
             showModal = true;
         }
         catch (Exception e)
         {
+            
             Console.WriteLine(e);
             msg = e.Message;
+
         }
     }
 

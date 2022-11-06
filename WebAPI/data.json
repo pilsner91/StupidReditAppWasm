@@ -2,18 +2,11 @@
   "Users": [
     {
       "Id": 1,
-      "UserName": "asdf"
+      "UserName": "asdf",
+      "password": "test"
     }
   ],
-  "Todos": [
-    {
-      "Id": 1,
-      "Owner": {
-        "Id": 1,
-        "UserName": "asdf"
-      },
-      "Title": "sdaf",
-      "IsCompleted": false
-    }
+  "Posts": [
+
   ]
 }

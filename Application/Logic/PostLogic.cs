@@ -24,10 +24,10 @@ public class PostLogic : IPostLogic
             throw new Exception($"User with id {dto.OwnerId} was not found.");
         }
 
-        Post post = new Post(user, dto.Title);
-
+        Post post = new Post(user, dto.Title, dto.Text);
+        
         ValidatePost(post);
-
+        Console.WriteLine(post.Id+" " + "Owner: "+ post.Owner.Id + " " +post.Owner.Password +" " + post.Owner.UserName+ post.Published +  " " + post.Title + " " + post.PostText);
         Post created = await _postDao.CreateAsync(post);
         return created;
     }
@@ -43,7 +43,7 @@ public class PostLogic : IPostLogic
 
         if (existing == null)
         {
-            throw new Exception($"Todo with ID {dto.Id} not found!");
+            throw new Exception($"Post with ID {dto.Id} not found!");
         }
 
         User? user = null;
@@ -58,16 +58,17 @@ public class PostLogic : IPostLogic
 
         if (dto.Published != null && existing.Published && !(bool)dto.Published)
         {
-            throw new Exception("Cannot un-complete a completed Todo");
+            throw new Exception("Cannot un-publish a published Post");
         }
 
         User userToUse = user ?? existing.Owner;
         string titleToUse = dto.Title ?? existing.Title;
-        bool completedToUse = dto.Published ?? existing.Published;
+        string postTextToUse = dto.PostText ?? existing.PostText;
+        bool publishedUpdate = dto.Published ?? existing.Published;
         
-        Post updated = new (userToUse, titleToUse)
+        Post updated = new (userToUse, titleToUse, postTextToUse)
         {
-            Published = completedToUse,
+            Published = publishedUpdate,
             Id = existing.Id,
         };
 
@@ -81,7 +82,7 @@ public class PostLogic : IPostLogic
         Post? todo = await _postDao.GetByIdAsync(id);
         if (todo == null)
         {
-            throw new Exception($"Todo with ID {id} was not found!");
+            throw new Exception($"Post with ID {id} was not found!");
         }
 
         if (!todo.Published)
@@ -94,13 +95,13 @@ public class PostLogic : IPostLogic
 
     public async Task<PostBasicDto> GetByIdAsync(int id)
     {
-        Post? todo = await _postDao.GetByIdAsync(id);
-        if (todo == null)
+        Post? post = await _postDao.GetByIdAsync(id);
+        if (post == null)
         {
-            throw new Exception($"Todo with id {id} not found");
+            throw new Exception($"Post with id {id} not found");
         }
 
-        return new PostBasicDto(todo.Id, todo.Owner.UserName, todo.Title, todo.Published);
+        return new PostBasicDto(post.Id, post.Owner.UserName, post.Title, post.Published, post.PostText);
     }
 
     private void ValidatePost(Post dto)

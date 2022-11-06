@@ -25,7 +25,7 @@ public class UserLogic : IUserLogic
         {
             UserName = dto.UserName
         };
-        
+        toCreate.Password = dto.Password;
         User created = await userDao.CreateAsync(toCreate);
         
         return created;

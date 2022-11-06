@@ -16,12 +16,13 @@ public class PostFileDao : IPostDao
     public Task<Post> CreateAsync(Post post)
     {
         int id = 1;
+        Console.WriteLine($"postId = {post.Id} ownerID= {post.Owner.Id} Password= {post.Owner.Password} username= {post.Owner.UserName} published = {post.Published} title = {post.Title} text = {post.PostText}");
         if (context.Posts.Any())
         {
             id = context.Posts.Max(t => t.Id);
             id++;
         }
-
+        
         post.Id = id;
 
         context.Posts.Add(post);
