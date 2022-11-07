@@ -3,10 +3,62 @@
     {
       "Id": 1,
       "UserName": "asdf",
-      "password": "test"
+      "Password": null
+    },
+    {
+      "Id": 2,
+      "UserName": "ASDFF",
+      "Password": "ASDF"
+    },
+    {
+      "Id": 3,
+      "UserName": "fdsa",
+      "Password": "dfsa"
+    },
+    {
+      "Id": 4,
+      "UserName": "asdfasdf",
+      "Password": "sdf"
+    },
+    {
+      "Id": 5,
+      "UserName": "puiqwrep",
+      "Password": "asdfasdf"
     }
   ],
   "Posts": [
-
+    {
+      "Id": 3,
+      "Owner": {
+        "Id": 4,
+        "UserName": "asdfasdf",
+        "Password": "sdf"
+      },
+      "Title": "asdfads",
+      "PostText": "fawewrwer",
+      "Published": false
+    },
+    {
+      "Id": 2,
+      "Owner": {
+        "Id": 4,
+        "UserName": "asdfasdf",
+        "Password": "sdf"
+      },
+      "Title": "as\u00E6d",
+      "PostText": "adfsddfa",
+      "Published": true
+    },
+    {
+      "Id": 1,
+      "Owner": {
+        "Id": 2,
+        "UserName": "ASDFF",
+        "Password": "ASDF"
+      },
+      "Title": "SADF",
+      "PostText": "asdf",
+      "Published": true
+    }
   ]
 }

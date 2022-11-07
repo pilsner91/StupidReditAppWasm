@@ -21,13 +21,7 @@ public class TestController : ControllerBase
     {
         return Ok("This was accepted as authorized");
     }
-
-    // policy MustBeVia
-    [HttpGet("mustbevia"), Authorize("MustBeVia")]
-    public ActionResult GetAsVia()
-    {
-        return Ok("This was accepted as via domain");
-    }
+    
 
     // manual checking
     [HttpGet("manualcheck")]
