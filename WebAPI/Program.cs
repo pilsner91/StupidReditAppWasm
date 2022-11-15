@@ -54,6 +54,7 @@ AuthorizationPolicies.AddPolicies(builder.Services);
 
 var app = builder.Build();
 
+
 app.UseCors(x => x
     .AllowAnyMethod()
     .AllowAnyHeader()
@@ -68,6 +69,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Application.DaoInterfaces;
 using Domain.Models;
 using FileData;
 
@@ -7,15 +8,17 @@ namespace WebApi.Services;
 
 public class AuthService : IAuthService
 {
-    private readonly FileContext context = new FileContext();
 
+    private readonly IUserDao userDao;
 
-    public ICollection<User> users => context.Users;
-
-
-    public Task<User> ValidateUser(string username, string password)
+    public AuthService(IUserDao userDao)
     {
-        User? existingUser = users.FirstOrDefault(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
+        this.userDao = userDao;
+    }
+
+    public async Task<User> ValidateUser(string username, string password)
+    {
+        User? existingUser = await userDao.GetByUsernameAsync(username);
         if (existingUser == null)
         {
             throw new Exception("User not found");
@@ -26,13 +29,11 @@ public class AuthService : IAuthService
             throw new Exception("Password mismatch");
         }
 
-        return Task.FromResult(existingUser);
+        return await Task.FromResult(existingUser);
     }
 
     public Task RegisterUser(User user)
     {
-        Console.WriteLine(users.Count);
-        Console.WriteLine(user.Id + user.Password+user.UserName);
         if (string.IsNullOrEmpty(user.UserName))
         {
             throw new ValidationException("Username cannot be null");
@@ -46,8 +47,7 @@ public class AuthService : IAuthService
         
         // save to persistence instead of list
         
-        users.Add(user);
-        Console.WriteLine(users.Count);
+        userDao.CreateAsync(user);
         return Task.CompletedTask;
     }
 }
