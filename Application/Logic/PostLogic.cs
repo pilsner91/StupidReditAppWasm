@@ -27,7 +27,7 @@ public class PostLogic : IPostLogic
         Post post = new Post(user, dto.Title, dto.Text);
         
         ValidatePost(post);
-        Console.WriteLine(post.Id+" " + "Owner: "+ post.Owner.Id + " " +post.Owner.Password +" " + post.Owner.UserName+ post.Published +  " " + post.Title + " " + post.PostText);
+        Console.WriteLine("id="+post.Id + "Owner: " + "doesn't work " +post.Owner.Password +" " + post.Owner.UserName+ post.Published +  " " + post.Title + " " + post.PostText);
         Post created = await _postDao.CreateAsync(post);
         return created;
     }
@@ -79,15 +79,15 @@ public class PostLogic : IPostLogic
 
     public async Task DeleteAsync(int id)
     {
-        Post? todo = await _postDao.GetByIdAsync(id);
-        if (todo == null)
+        Post? post = await _postDao.GetByIdAsync(id);
+        if (post == null)
         {
             throw new Exception($"Post with ID {id} was not found!");
         }
 
-        if (!todo.Published)
+        if (!post.Published)
         {
-            throw new Exception("Cannot delete un-completed Todo!");
+            throw new Exception("Cannot delete un-completed Post!");
         }
 
         await _postDao.DeleteAsync(id);
@@ -100,8 +100,10 @@ public class PostLogic : IPostLogic
         {
             throw new Exception($"Post with id {id} not found");
         }
+    //    Console.WriteLine($"id = {post.Id} + username = {post.Owner.UserName} + Title = {post.Title} + published = {post.Published} + text = {post.PostText}");
+        PostBasicDto returnvalue = new PostBasicDto(post.Id, post.Owner.UserName, post.Title, post.Published, post.PostText);
 
-        return new PostBasicDto(post.Id, post.Owner.UserName, post.Title, post.Published, post.PostText);
+        return returnvalue;
     }
 
     private void ValidatePost(Post dto)
