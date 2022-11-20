@@ -57,14 +57,16 @@ public class PostEfcDao:IPostDao
 
     public async Task UpdateAsync(Post post)
     {
-        context.ChangeTracker.Clear();
         context.Posts.Update(post);
         await context.SaveChangesAsync();
     }
 
     public async Task<Post?> GetByIdAsync(int postId)
     {
-        Post? found = await context.Posts.Include(post => post.Owner).SingleOrDefaultAsync(p => p.Id==postId);
+        Post? found = await context.Posts
+            .AsNoTracking()
+            .Include(post => post.Owner)
+            .SingleOrDefaultAsync(p => p.Id==postId);
         return found;
     }
 

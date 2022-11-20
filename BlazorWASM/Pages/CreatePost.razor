@@ -31,7 +31,12 @@
                 <option>Choose</option>
                 @foreach (User user in users)
                 {
-                    <option value="@user.Id">@user.UserName</option>
+                    <AuthorizeView>
+                        @if (@context.User.Identity != null && @context.User.Identity.Name.Equals(user.UserName))
+                        {
+                            <option value="@user.Id">@user.UserName</option>
+                        }
+                    </AuthorizeView>
                 }
             </select>
         </div>

@@ -47,7 +47,6 @@
         errorLabel = "";
         try
         {
-            Console.WriteLine(userName+password);
             await authService.LoginAsync(userName, password);
             navMgr.NavigateTo("/");
         }

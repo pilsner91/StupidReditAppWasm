@@ -12,21 +12,13 @@ public class PostContext:DbContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
                 optionsBuilder.UseSqlite("Data Source = ../FileData/Post.db");
+                optionsBuilder.EnableSensitiveDataLogging();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
                 modelBuilder.Entity<Post>().HasKey(post => post.Id);
                 modelBuilder.Entity<User>().HasKey(user => user.Id);
                 modelBuilder.Entity<User>().HasAlternateKey(user => user.UserName);
-
-                modelBuilder.Entity<Post>(entity =>
-                {
-                        entity.HasOne(post => post.Owner).WithMany(user => user.posts);
-                });
-                modelBuilder.Entity<User>(entity =>
-                {
-                        entity.HasMany(user => user.posts).WithOne(post => post.Owner);
-                });
         }
 
 }

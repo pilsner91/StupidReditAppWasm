@@ -33,6 +33,7 @@ public class AuthController : ControllerBase
     [HttpPost, Route("login")]
     public async Task<ActionResult> Login([FromBody] UserLoginDto userLoginDto)
     {
+        Console.WriteLine("TEST");
         try
         {
             User user = await authService.ValidateUser(userLoginDto.Username, userLoginDto.Password);
@@ -76,8 +77,7 @@ public class AuthController : ControllerBase
             new Claim(JwtRegisteredClaimNames.Sub, config["Jwt:Subject"]),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-            new Claim(ClaimTypes.Name, user.UserName),
-
+            new Claim(ClaimTypes.Name, user.UserName)
         };
         return claims.ToList();
     }

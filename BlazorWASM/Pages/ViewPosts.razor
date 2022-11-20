@@ -64,23 +64,28 @@ else
         <tbody>
         @foreach (var item in post)
         {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Owner.UserName</td>
-                <td>@item.Title</td>
-                <td>
-                    <FancyCheckBox IsCompleted="@item.Published" OnChange="@((status) => Published(item, status))"/>
-                </td>
-                <td>
-                    <img src="icons/edit.gif" class="funnel" @onclick="@(() => navMgr.NavigateTo($"/EditPost/{item.Id}"))"/>
-                </td>
-                <td>
-                    <label @onclick="@(() => RemovePost(item.Id))" style="cursor:pointer; color: red; font-weight: bold">
-                        &#x2717;
-                    </label>
-                </td>
-                <td><label></label></td>
-            </tr>
+            <AuthorizeView>
+                @if((@context.User.Identity != null && @context.User.Identity.Name.Equals(item.Owner.UserName))||item.Published)
+                {
+                <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Owner.UserName</td>
+                        <td>@item.Title</td>
+                        <td>
+                            <FancyCheckBox IsCompleted="@item.Published" OnChange="@((status) => Published(item, status))"/>
+                        </td>
+                        <td>
+                            <img src="icons/edit.gif" class="funnel" @onclick="@(() => navMgr.NavigateTo($"/EditPost/{item.Id}"))"/>
+                        </td>
+                        <td>
+                            <label @onclick="@(() => RemovePost(item.Id))" style="cursor:pointer; color: red; font-weight: bold">
+                                &#x2717;
+                            </label>
+                        </td>
+                        <td><label></label></td>
+                    </tr>
+                }
+            </AuthorizeView>
             
         }
         </tbody>
