@@ -57,7 +57,8 @@ public class PostEfcDao:IPostDao
 
     public async Task UpdateAsync(Post post)
     {
-        context.Posts.Update(post);
+       
+        context.Update(post);
         await context.SaveChangesAsync();
     }
 
