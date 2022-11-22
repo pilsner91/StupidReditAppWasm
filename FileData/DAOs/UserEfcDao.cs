@@ -45,7 +45,9 @@ public class UserEfcDao:IUserDao
 
     public async Task<User?> GetByIdAsync(int id)
     {
-        User? user = await context.Users.FindAsync(id);
+        User? user = await context.Users
+            .AsNoTracking()
+            .SingleOrDefaultAsync(user =>user.Id== id);
         return user;
     }
 }
